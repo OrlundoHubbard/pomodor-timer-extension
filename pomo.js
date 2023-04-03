@@ -15,4 +15,12 @@ const resetButton = document.getElementById('reset-button');
 // Define functions to update the timer display and and handle button clicks
 function updateTimerDisplay(timeLeft) {
     const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function startTimer() {
+    timerId = setInterval(() => {
+        timerLength--;
+    })
 }
