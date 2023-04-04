@@ -22,5 +22,16 @@ function updateTimerDisplay(timeLeft) {
 function startTimer() {
     timerId = setInterval(() => {
         timerLength--;
+        updateTimerDisplay(timerLength);
+        if (timerLength <= 0) {
+            clearInterval(timerId);
+            // If the timer just finished a pomodoro, start a short break
+        if (timerLength === 0) {
+            timerLength = shortBreakLength;
+            updateTimerDisplay(timerLength);
+            alert('Time for a break!');
+        }
+        // If the timer just finished a short break, start a pomodoro
+        }
     })
 }
