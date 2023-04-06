@@ -32,6 +32,37 @@ function startTimer() {
             alert('Time for a break!');
         }
         // If the timer just finished a short break, start a pomodoro
+        else {
+            timerLength = pomodoroLength;
+            updateTimerDisplay(timerLength);
+            alert('Time to get back to work!');
         }
-    })
+        startTimer();
+        }
+    }, 1000);
+    startButton.disabled = true;
+    pauseButton.disabled = false; 
+    resetButton.disabled = false;
 }
+
+function pauseTimer() {
+    clearInterval(timerId);
+    startButton.disabled = false;
+    pauseButton.disabled = true;
+}
+
+function resetTimer() {
+    clearInterval(timerId);
+    timerLength = pomodoroLength;
+    updateTimerDisplay(timerLength);
+    startButton.disabled = false;
+    pauseButton.disabled = true;
+}
+
+// Add event listeners to the buttons
+startButton.addEventListener('click', startTimer);
+pauseButton.addEventListener('click', pauseTimer);
+resetButton.addEventListener('click', resetTimer);
+
+// Initialize the timer display
+updateTimerDisplay(timerLength);
