@@ -23,13 +23,12 @@ function startTimer() {
     timerId = setInterval(() => {
         timerLength--;
         updateTimerDisplay(timerLength);
-        if (timerLength <= 0) {
-            clearInterval(timerId);
-            // If the timer just finished a pomodoro, start a short break
         if (timerLength === 0) {
             timerLength = shortBreakLength;
             updateTimerDisplay(timerLength);
             alert('Time for a break!');
+        
+            // If the timer just finished a pomodoro, start a short break
         }
         // If the timer just finished a short break, start a pomodoro
         else {
@@ -38,7 +37,6 @@ function startTimer() {
             alert('Time to get back to work!');
         }
         startTimer();
-        }
     }, 1000);
     startButton.disabled = true;
     pauseButton.disabled = false; 
